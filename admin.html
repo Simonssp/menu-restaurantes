@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Restaurante Elegante - Painel administrativo para gestão do cardápio">
+    <meta name="keywords" content="admin, painel, gestão restaurante, elegante">
+    <meta name="author" content="Restaurante Elegante">
+    <title>Elegante - Painel Administrativo</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="admin-header navbar navbar-expand-lg sticky-top">
+        <div class="container px-3 px-md-4">
+            <a class="navbar-brand" href="admin.html">
+                <i class="fas fa-crown me-2"></i>
+                <span class="brand-text">Elegante</span>
+                <span class="admin-badge">Admin</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="ms-auto d-flex gap-3 align-items-center">
+                    <a href="index.html" class="nav-link fw-medium">Ver Cardápio</a>
+                    <a href="admin.html" class="btn btn-primary btn-sm px-3">Painel</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container-fluid py-4">
+        <div class="row">
+            <!-- Add/Edit Form -->
+            <div class="col-lg-4 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0">Adicionar/Editar Item do Cardápio</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="menuForm">
+                            <div class="mb-3">
+                                <label class="form-label">Nome do Item</label>
+                                <input type="text" class="form-control" id="itemName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Descrição</label>
+                                <textarea class="form-control" id="itemDescription" rows="2" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Categoria</label>
+                                <select class="form-select" id="itemCategory" required>
+                                    <option value="">Selecionar Categoria</option>
+                                    <option value="appetizers">Entradas</option>
+                                    <option value="mains-meat">Pratos Principais - Carne</option>
+                                    <option value="mains-fish">Pratos Principais - Peixe</option>
+                                    <option value="desserts">Sobremesas</option>
+                                    <option value="drinks">Bebidas</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Preço (€)</label>
+                                <input type="number" class="form-control" id="itemPrice" step="0.01" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">URL da Imagem</label>
+                                <input type="text" class="form-control" id="itemImage" placeholder="https://...">
+                            </div>
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="itemAvailable" checked>
+                                <label class="form-check-label" for="itemAvailable">Disponível</label>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button type="submit" class="btn btn-dark flex-grow-1">Salvar Item</button>
+                                <button type="button" class="btn btn-secondary" id="resetBtn">Limpar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Items Table -->
+            <div class="col-lg-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0">Itens do Cardápio</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0" id="menuTable">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Categoria</th>
+                                        <th>Preço</th>
+                                        <th>Status</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableBody">
+                                    <!-- Items will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="emptyTable" class="text-center text-muted py-4" style="display: none;">
+                            <p>Nenhum item no cardápio ainda. Adicione um para começar!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Excluir Item</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    Tem certeza que deseja excluir este item?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmDelete">Excluir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer-section text-white text-center py-4 mt-5">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 Restaurante Elegante. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

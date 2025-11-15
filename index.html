@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Elegante - Restaurante de alta gastronomia com culinária requintada e serviço excepcional">
+    <meta name="keywords" content="restaurante, alta gastronomia, culinária, elegante, fine dining">
+    <meta name="author" content="Restaurante Elegante">
+    <title>Elegante - Restaurante de Alta Gastronomia</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="navbar navbar-expand-lg navbar-dark bg-transparent sticky-top">
+        <div class="container px-3 px-md-4">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-crown me-2"></i>
+                <span class="brand-text">Elegante</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="ms-auto d-flex gap-3 align-items-center">
+                    <a href="index.html" class="nav-link text-white fw-medium">Cardápio</a>
+                    <a href="admin.html" class="btn btn-outline-light btn-sm px-3">Administrar</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center text-white d-flex align-items-center justify-content-center position-relative">
+        <div class="hero-overlay"></div>
+        <div class="container position-relative">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="hero-title mb-4 animate-fade-up">Elegante</h1>
+                    <p class="hero-subtitle mb-4 animate-fade-up" style="animation-delay: 0.3s;">Uma Experiência Culinária Excepcional</p>
+                    <div class="hero-divider mb-4 animate-fade-up" style="animation-delay: 0.6s;"></div>
+                    <p class="hero-description animate-fade-up" style="animation-delay: 0.9s;">Descubra nossa culinária refinada em um ambiente elegante onde cada prato conta uma história</p>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Search & Filter -->
+    <div class="search-section py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="search-wrapper">
+                        <div class="row g-3">
+                            <div class="col-md-8">
+                                <div class="search-input-wrapper">
+                                    <i class="fas fa-search search-icon"></i>
+                                    
+                                    <input type="text" class="form-control search-input" id="searchInput" placeholder="Pesquisar no nosso cardápio...">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-select filter-select" id="categoryFilter">
+                                    <option value="">Todas as categorias</option>
+                                    <option value="appetizers">Entradas</option>
+                                    <option value="mains-meat">Pratos Principais - Carne</option>
+                                    <option value="mains-fish">Pratos Principais - Peixe</option>
+                                    <option value="desserts">Sobremesas</option>
+                                    <option value="drinks">Bebidas</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Items -->
+    <div class="menu-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Nosso Cardápio</h2>
+                <div class="section-divider mx-auto"></div>
+                <p class="section-subtitle">Uma seleção refinada de nossas criações culinárias</p>
+            </div>
+            <div id="menuContainer" class="row g-4">
+                <!-- Menu items will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Empty State -->
+    <div id="emptyState" class="container text-center py-5" style="display: none;">
+        <p class="text-muted fs-5">No menu items found.</p>
+    </div>
+
+    <footer class="footer-section text-white text-center">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="footer-title mb-3">
+                        <i class="fas fa-crown me-2"></i>Elegante
+                    </h5>
+                    <p class="footer-text">Uma experiência culinária excepcional em um ambiente refinado.</p>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h6 class="footer-subtitle mb-3">Contato</h6>
+                    <p class="footer-text mb-1"><i class="fas fa-phone me-2"></i>+55 11 99999-9999</p>
+                    <p class="footer-text mb-1"><i class="fas fa-envelope me-2"></i>contato@elegante.com.br</p>
+                    <p class="footer-text"><i class="fas fa-map-marker-alt me-2"></i>Rua da Gastronomia, 123 - São Paulo</p>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h6 class="footer-subtitle mb-3">Horário de Funcionamento</h6>
+                    <p class="footer-text mb-1">Seg - Sex: 18h00 - 23h00</p>
+                    <p class="footer-text mb-1">Sáb - Dom: 12h00 - 14h30 & 18h00 - 23h30</p>
+                </div>
+            </div>
+            <hr class="footer-divider my-4">
+            <div class="row">
+                <div class="col-12">
+                    <p class="footer-copyright mb-0">&copy; 2025 Restaurante Elegante. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
